@@ -1,4 +1,4 @@
-FROM centos:centos8
+FROM fedora:latest
 
 ##
 # Update system
