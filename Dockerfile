@@ -28,9 +28,17 @@ RUN \
 ##
 # Add custom runtimes.json
 ##
+#RUN \
+    #rm -rf /root/.samp/runtimes.json && \
+    #curl https://raw.githubusercontent.com/sampctl/runtimes/master/runtimes.json >> /root/.samp/runtimes.json
+
+##
+# Add custom runtimes.json
+##
 RUN \
-    rm -rf /root/.samp/runtimes.json && \
-    curl https://raw.githubusercontent.com/sampctl/runtimes/master/runtimes.json >> /root/.samp/runtimes.json
+    rm -rf /root/.samp/runtimes.json
+
+COPY docker/runtimes.json /root/.samp/
 
 ##
 # We done!
