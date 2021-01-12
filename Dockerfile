@@ -41,6 +41,11 @@ RUN \
 COPY docker/runtimes.json /root/.samp/
 
 ##
+# Set workdir
+##
+WORKDIR . /app
+
+##
 # We done!
 ##
 CMD ["/bin/bash"]
