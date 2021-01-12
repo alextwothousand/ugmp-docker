@@ -1,5 +1,7 @@
 FROM fedora:latest
 
+ENV SAMPCTL_VERSION="1.9.1"
+
 ##
 # Update system
 ##
@@ -17,7 +19,8 @@ RUN \
     psmisc \
     glibc.i686 \
     libstdc++.i686 \
-    wine.i686
+    wine.i686 \
+	tar
 
 ##
 # Install sampctl
@@ -44,6 +47,13 @@ COPY docker/runtimes.json /root/.samp/
 # Set workdir
 ##
 WORKDIR . /app
+
+##
+# Download windows sampctl
+##
+RUN \
+    wget https://github.com/Southclaws/sampctl/releases/download/${SAMPCTL_VERSION}/sampctl_${SAMPCTL_VERSION}_windows_amd64.tar.gz && \
+	tar -zxvf sampctl_${SAMPCTL_VERSION}_windows_amd64.tar.gz
 
 ##
 # We done!
