@@ -5,7 +5,7 @@ usage:
 FROM alexdev2000/ugmp-docker:latest
 
 ##
-# Add gamemode to workdir
+# Add package to workdir
 ##
 ADD . .
 
@@ -13,16 +13,16 @@ ADD . .
 # Ensure dependencies
 ##
 RUN \
-    sampctl p ensure --platform windows
+    sampctl p ensure
 
 ##
-# Build gamemode
+# Build package
 ##
 RUN \
-    sampctl p build --platform windows
+    sampctl p build
 
 ##
 # Run server...
 ##
-ENTRYPOINT [ "wine", "sampctl.exe", "p", "run" ]
+ENTRYPOINT [ "sampctl", "p", "run" ]
 ```
