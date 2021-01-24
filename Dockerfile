@@ -12,12 +12,13 @@ RUN \
 ##
 RUN \
     yum install -y \
+    curl \
     wget \
-    git \
     psmisc \
+    tar \
+    git \
     glibc.i686 \
-    libstdc++.i686 \
-    wine.i686
+    libstdc++.i686
 
 ##
 # Install sampctl
@@ -25,20 +26,7 @@ RUN \
 RUN \
     curl https://raw.githubusercontent.com/Southclaws/sampctl/master/install-rpm.sh | sh
 
-##
-# Add custom runtimes.json
-##
-#RUN \
-    #rm -rf /root/.samp/runtimes.json && \
-    #curl https://raw.githubusercontent.com/sampctl/runtimes/master/runtimes.json >> /root/.samp/runtimes.json
-
-##
-# Add custom runtimes.json
-##
-RUN \
-    rm -rf /root/.samp/runtimes.json
-
-COPY docker/runtimes.json /root/.samp/
+WORKDIR /app
 
 ##
 # We done!
