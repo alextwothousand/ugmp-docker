@@ -1,5 +1,7 @@
 FROM fedora:latest
 
+ENV SAMPCTL_VERSION="1.9.1"
+
 ##
 # Update system
 ##
@@ -26,6 +28,9 @@ RUN \
 RUN \
     curl https://raw.githubusercontent.com/Southclaws/sampctl/master/install-rpm.sh | sh
 
+##
+# Set workdir
+##
 WORKDIR /app
 
 ##
