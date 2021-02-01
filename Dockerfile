@@ -1,6 +1,7 @@
 FROM fedora:latest
 
 ENV SAMPCTL_VERSION="1.9.1"
+ENV PORT=7777
 
 ##
 # Update system
@@ -32,6 +33,11 @@ RUN \
 # Set workdir
 ##
 WORKDIR /app
+
+##
+# Expose port
+##
+EXPOSE ${PORT}/udp
 
 ##
 # We done!
